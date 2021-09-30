@@ -9,32 +9,32 @@ print("""
 ╚══════╝╚═╝░░░░░╚═╝╚═════╝░╚══════╝╚═════╝░╚═╝░░╚═╝░╚════╝░░╚════╝░╚═╝░░╚═╝            
 
 """)
-url = input("URL de tu Discord Webhook: ")
+url = input("URL of the WebHook: ")
 embed = {}
-embedtitle = input("Titulo del Embed: ")
+embedtitle = input("Embed Title: ")
 embed["title"] = embedtitle
-embeddesc = input("Descripcion del Embed: ")
+embeddesc = input("Embed Description: ")
 embed["description"] = embeddesc
 while True: #Thumbnail (optional)
-    thumbnailornot = input("Agregar una imagen? (Si/no): ")
-    if thumbnailornot.lower() == 'si':
-        embedthumbnailurl = input("Ingresa la URL de tu imagen: ")
+    thumbnailornot = input("Willing to add an image? (S/n): ")
+    if thumbnailornot.lower() == 's':
+        embedthumbnailurl = input("URL Of the Image: ")
         embed['thumbnail'] = {"url": embedthumbnailurl}
         break
-    elif thumbnailornot.lower() == 'no':
+    elif thumbnailornot.lower() == 'n':
         break
     else:
-        print("Porfavor elije una opcion valida; 'Si' o 'no' :")
-embedfieldnum = input("Cuantos Campos deseas en tu embed? (Ingresa un numero, 0 para ninguno): ")
+        print("Please select a valid option; 'S' or 'n' :")
+embedfieldnum = input("How many fields for your embed? (Put a number, 0 for none): ")
 try: embedfieldnum = int(embedfieldnum)
-except: print("Tenias que poner un numero, supongo que te referias a 0")
+except: print("You were supposed to put a number, we will assume you meant 0")
 if embedfieldnum is not 0:
     embed['fields'] = []
     for fieldnum in range(embedfieldnum):
         fieldtitle = input("Campo {} Titulo: ".format(fieldnum+1))
         fieldtext = input("Campo {} Contenido: ".format(fieldnum+1))
         embed['fields'].append({"name":fieldtitle,"value":fieldtext})
-embedcolor = input("Hex Color de tu Embed (6 Digitos): ")
+embedcolor = input("Hex Color of the Embed (6 Digits): ")
 embedcolor = int(embedcolor, 16)
 embed["color"] = embedcolor
 print(embed)
